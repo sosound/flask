@@ -3,22 +3,24 @@ import config
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object(config)
 # CORS(app, resources={r"*": {"origins": "*"}})
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 class User(db.Model):
-    __tablename__ = 'user1'
+    __tablename__ = 'user4'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200))
 
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/api/')
