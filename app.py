@@ -13,7 +13,7 @@ migrate = Migrate(app, db)
 
 
 class User(db.Model):
-    __tablename__ = 'user4'
+    __tablename__ = 'user5'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200))
@@ -34,4 +34,4 @@ def hello_world():  # put application's code here
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
